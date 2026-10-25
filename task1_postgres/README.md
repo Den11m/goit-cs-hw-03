@@ -1,6 +1,6 @@
 # Task Management System - PostgreSQL
 
-- `schema.sql` — creates tables `users`, `status`, `tasks` and inserts statuses `new`, `in progress`, `completed`
+- `create_tables.py` — creates tables `users`, `status`, `tasks` and inserts statuses `new`, `in progress`, `completed`
 - `seed.py` — fills the tables with test data using Faker
 - `queries.sql` — 14 SQL queries from the assignment
 - `requirements.txt` — Python dependencies
@@ -38,8 +38,8 @@ docker run --name task-pg -d -p 5432:5432 -e POSTGRES_DB=task_management -e POST
 ## Run
 
 ```bash
-# 1. Create schema
-docker exec -i task-pg psql -U postgres -d task_management < schema.sql
+# 1. Create tables
+python create_tables.py
 
 # 2. Seed test data (10 users, 30 tasks)
 python seed.py
@@ -48,6 +48,6 @@ python seed.py
 docker exec -i task-pg psql -U postgres -d task_management < queries.sql
 ```
 
-With local psql use `psql -U postgres -d task_management -f <file>.sql` instead of `docker exec`.
+With local psql use `psql -U postgres -d task_management -f queries.sql` instead of `docker exec`.
 
 Queries use example values (`user_id = 1`, domain `example.com`, ...) — change them as needed.

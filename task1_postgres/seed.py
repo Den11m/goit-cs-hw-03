@@ -1,17 +1,9 @@
-import os
 import random
 
 import psycopg2
 from faker import Faker
 
-# Connection settings come from environment variables (no passwords in code)
-DB_CONFIG = {
-    "dbname": os.getenv("POSTGRES_DB", "task_management"),
-    "user": os.getenv("POSTGRES_USER", "postgres"),
-    "password": os.getenv("POSTGRES_PASSWORD"),
-    "host": os.getenv("POSTGRES_HOST", "localhost"),
-    "port": os.getenv("POSTGRES_PORT", "5432"),
-}
+from create_tables import DB_CONFIG
 
 NUM_USERS = 10
 NUM_TASKS = 30
